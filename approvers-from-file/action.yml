@@ -12,4 +12,4 @@ outputs:
 
 runs:
   using: 'node16'
-  main: 'dist/approvers-from-file/index.js'
+  main: '../dist/approvers-from-file/index.js'
