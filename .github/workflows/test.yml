@@ -24,7 +24,7 @@ jobs:
       - uses: ./approvers-from-file
         id: approvers
       - run: |
-          echo ${{ fromJSON(steps.approvers.outputs.approvers) }}
+          echo ${{ fromJSON(steps.approvers.outputs.approvers).approvers }}
   test-override-values: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:
@@ -32,6 +32,6 @@ jobs:
       - uses: ./approvers-from-file
         id: approvers
         with:
-          path: ./github/approvers-override.yml
+          path: ./.github/approvers-override.yml
       - run: |
-          echo ${{ fromJSON(steps.approvers.outputs.approvers) }}
+          echo ${{ fromJSON(steps.approvers.outputs.approvers).approvers }}
