@@ -32,7 +32,7 @@ jobs:
           APPROVERS: ${{ fromJSON(steps.approvers.outputs.approvers) }}
         run: |
           echo $APPROVERS
-      - name: echo
+      - name: echo override
         env:
           APPROVERS: ${{ fromJSON(steps.approvers_override.outputs.approvers) }}
         run: |
