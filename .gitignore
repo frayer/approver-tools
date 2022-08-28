@@ -78,6 +78,9 @@ typings/
 # nuxt.js build output
 .nuxt
 
+# VSCode .devcontainer configuration
+.devcontainer/
+
 # vuepress build output
 .vuepress/dist
 

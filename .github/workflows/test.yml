@@ -22,10 +22,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./approvers-from-file
+        id: approvers
+      - run: |
+          echo ${{ fromJSON(steps.approvers.outputs.approvers) }}
   test-override-values: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: ./approvers-from-file
+        id: approvers
         with:
           path: ./github/approvers-override.yml
+      - run: |
+          echo ${{ fromJSON(steps.approvers.outputs.approvers) }}
