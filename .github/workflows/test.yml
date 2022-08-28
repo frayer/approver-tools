@@ -12,7 +12,7 @@ jobs:
   build: # make sure build/ci work properly
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: |
           npm install
       - run: |
@@ -25,7 +25,7 @@ jobs:
   test-override-values: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: ./approvers-from-file
+      - uses: actions/checkout@v3
+      - uses: ./
         with:
           path: ./github/approvers.yml
