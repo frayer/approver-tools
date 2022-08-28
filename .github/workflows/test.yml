@@ -29,7 +29,7 @@ jobs:
           path: ./.github/approvers-override.yml
       - name: echo
         run: |
-          echo "${{ fromJSON(steps.approvers.outputs.approvers) }}"
+          echo "${{ steps.approvers.outputs.approvers }}"
       - name: echo override
         run: |
-          echo "${{ fromJSON(steps.approvers_override.outputs.approvers) }}"
+          echo "${{ steps.approvers_override.outputs.approvers }}"
