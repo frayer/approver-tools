@@ -1,0 +1,15 @@
+name: 'Get approvers from file'
+description: 'Retrieve a list of approvers from a file'
+author: 'Michael Frayer <frayerm@gmail.com>'
+inputs:
+  path:
+    required: true
+    description: 'path to file containing the list of approvers'
+    default: '.github/approvers.yml'
+outputs:
+  approvers:
+    description: 'JSON formatted list of approver names'
+
+runs:
+  using: 'node16'
+  main: '../dist/approvers-from-file/index.js'

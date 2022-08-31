@@ -1,10 +1,12 @@
 name: 'build-test'
+
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
     branches:
       - main
       - 'releases/*'
+      - 'prototype/*'
 
 jobs:
   build: # make sure build/ci work properly
@@ -15,10 +17,19 @@ jobs:
           npm install
       - run: |
           npm run all
-  test: # make sure the action works on a clean machine without building
+  test-default-values: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: ./
+      - uses: actions/checkout@v2
+      - uses: ./approvers-from-file
+        id: approvers
+      - uses: ./approvers-from-file
+        id: approvers_override
         with:
-          milliseconds: 1000
+          path: ./.github/approvers-override.yml
+      - name: echo
+        run: |
+          echo "${{ steps.approvers.outputs.approvers }}"
+      - name: echo override
+        run: |
+          echo "${{ steps.approvers_override.outputs.approvers }}"
